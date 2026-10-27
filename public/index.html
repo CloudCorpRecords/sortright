@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SortRight — Which bin does it go in?</title>
+<meta name="description" content="Type any household item. SortRight tells you the right bin — and catches the conditions that change the answer.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="hero">
+  <div class="wrap">
+    <div class="brand">♻️ SortRight</div>
+    <h1>Which bin does it <em>actually</em> go in?</h1>
+    <p class="sub">Most sorting tools stop at the material. SortRight asks the follow-up question —
+      <strong>greasy? broken? still full?</strong> — because that's what changes the answer and keeps
+      whole truckloads of good recycling out of landfill.</p>
+    <div class="searchbox">
+      <input id="q" type="text" placeholder="Try: pizza box, plastic bag, batteries, coffee cup…" autocomplete="off" aria-label="Search an item">
+      <div id="suggest" class="suggest" hidden></div>
+    </div>
+    <div class="chips" id="quickChips"></div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section id="result" class="result" hidden></section>
+
+  <section class="panel">
+    <h2>♳ Got a resin code instead?</h2>
+    <p class="muted">Flip the item over, find the number in the ♻ triangle, tap it:</p>
+    <div class="resinrow" id="resinRow"></div>
+    <div id="resinOut" class="resinout"></div>
+  </section>
+
+  <section class="panel">
+    <h2>🧭 Don't see your item?</h2>
+    <p class="muted">Pick what it's made of — SortRight applies the same rules the database uses.</p>
+    <div class="matgrid" id="matGrid"></div>
+    <label class="cond"><input type="checkbox" id="matSoiled"> It's food-soiled / greasy and can't be rinsed clean</label>
+    <label class="cond"><input type="checkbox" id="matBroken"> It's broken glass</label>
+    <div id="matOut" class="resinout"></div>
+  </section>
+
+  <section class="panel stats" id="statsPanel">
+    <h2>📊 Your sorting session</h2>
+    <div class="statrow">
+      <div class="stat"><span id="stTotal">0</span><label>items sorted</label></div>
+      <div class="stat"><span id="stDiverted">0</span><label>kept out of landfill</label></div>
+      <div class="stat"><span id="stSaved">0</span><label>wishcycles caught</label></div>
+    </div>
+    <p class="muted" id="stNote">Every verdict you check is counted here. A "wishcycle caught" is an item whose
+      obvious bin was wrong — the kind of mistake that gets real recycling loads rejected at the plant.</p>
+  </section>
+
+  <section class="panel">
+    <h2>🗂️ Browse the database</h2>
+    <p class="muted"><span id="dbCount"></span> everyday items, each with the why — and the trap to avoid.</p>
+    <div class="browse" id="browse"></div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap muted">
+    SortRight — built for Arbiter Hacks V1, Theme Track: Rethinking Waste.
+    Rules reflect common US curbside programs; always confirm local variations.
+    Build Disclosure: AI-built by the Tree / Muse fleet, directed by Rene Turcios.
+  </div>
+</footer>
+
+<script src="../src/classifier.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
